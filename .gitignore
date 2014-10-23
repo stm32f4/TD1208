@@ -5,7 +5,7 @@
 *.map
 *.log
 **/.log
-**/.history/*
-**/.indexes/*
-**/release/*
-**/debug/*
+**/release/
+**/debug/
+**/.history/
+**/.indexes/
