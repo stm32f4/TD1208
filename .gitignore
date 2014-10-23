@@ -17,3 +17,12 @@
 .metadata/.plugins/org.eclipse.team.cvs.core/.running
 *.xmi
 .metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources
+.metadata/.plugins/org.eclipse.compare/dialog_settings.xml
+/.metadata/.plugins/org.eclipse.cdt.ui/dialog_settings.xml
+/.metadata/.plugins/org.eclipse.core.resources/.projects/libtdcore/.markers
+/.metadata/.plugins/org.eclipse.core.resources/.projects/libtdgeoloc/.markers
+/.metadata/.plugins/org.eclipse.core.resources/.projects/libtdsensor/.markers
+/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.egit.ui.prefs
+/.metadata/.plugins/org.eclipse.egit.ui/dialog_settings.xml
+/.metadata/.plugins/org.eclipse.team.ui/syncParticipants.xml
+/.metadata/.plugins/org.eclipse.ui.workbench/dialog_settings.xml
