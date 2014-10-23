@@ -1,0 +1,8 @@
+*.o
+*.bin
+*.lst
+*.elf
+*.map
+*.log
+*/.log
+*/history/*
