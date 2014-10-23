@@ -15,3 +15,5 @@
 **/.refactorings/**
 **/*.snap
 .metadata/.plugins/org.eclipse.team.cvs.core/.running
+*.xmi
+.metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources
