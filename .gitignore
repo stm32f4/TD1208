@@ -13,3 +13,5 @@
 **/*.pdom
 **/*.tree
 **/.refactorings/**
+**/*.snap
+.metadata/.plugins/org.eclipse.team.cvs.core/.running
