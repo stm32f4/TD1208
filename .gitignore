@@ -10,3 +10,4 @@
 **/.history/**
 **/.indexes/**
 **/buildstate/**
+**/*.pdom
