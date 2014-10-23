@@ -12,3 +12,4 @@
 **/buildstate/**
 **/*.pdom
 **/*.tree
+**/refactorings/**
