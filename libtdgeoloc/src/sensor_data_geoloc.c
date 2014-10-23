@@ -311,6 +311,7 @@ int8_t TD_SENSOR_EncodePositionXY(TD_GEOLOC_Fix_t *fix, uint8_t *data, uint8_t l
 			data[0] = 1 << 7;
 			longitude = -fix->position.longitude;
 		} else {
+			data[0] = 0;
 			longitude = fix->position.longitude;
 		}
 		if (fix->position.latitude < 0) {
