@@ -4,5 +4,5 @@
 *.elf
 *.map
 *.log
-*/.log
-*/history/*
+**/.log
+**/history/*
