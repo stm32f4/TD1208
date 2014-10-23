@@ -1,0 +1,51 @@
+/**
+\mainpage libtdrf
+
+\section Overview
+
+The tdrf library are high-level functions to make use of the on-board RF chip either for Sigfox transmission or
+for short range communication.
+
+\section Detailed Description
+
+\subsection Sigfox
+file: td_sigfox.h
+
+Provides the Sigfox transmission function as well as battery level while transmitting.
+
+\subsection LAN
+file: td_lan.h
+
+Provide a set of functions to use the RF chip as a short range modem thus allowing communication
+between several modules while keeping low power consumption thanks to window mode. Listen before Talk
+is also implemented in order to avoid collisions.
+
+TD_LAN_Process() should be added in UserLoop for the LAN to work properly. Please keep in mind that while
+Frame reception is made in interrupt, User callback will be called oustide interrupt context within TD_LAN_Process.
+
+\subsection Boot
+file: td_boot.h
+
+Provide a bootloader function which allow over-the-air update of the module on start-up.
+
+\section Limitation
+
+\subsection Sigfox
+
+As a Sigfox emission requires accurate timing and last several seconds which means it can not be executed within an interruption.
+Please keep in mind that during a Sigfox Transmission, NOTHING else can be processed.
+
+\subsection LAN
+
+When sending a message, a module will wait up to 200ms for a ACK. Therefore the receiving module must send its ACK
+as soon as possible to make sure it will be received. As calling the user function (in which the ACK should be sent)
+for frame reception is made TD_LAN_Process, other functions within UserLoop may delay frame reception leading to a
+missed ack.
+
+\section Examples
+
+  - sigfox: send sigfox frames
+  - lan_rx: start LAN reception and display received messages
+  - lan_tx: send LAN messages and display ack
+  - gateway: show how to forward a LAN message via sigfox
+*/

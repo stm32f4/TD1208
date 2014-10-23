@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workingSetManager>
+<workingSet editPageId="org.eclipse.cdt.ui.CElementWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1401386824791_1" label="Common" name="Common">
+<item factoryID="org.eclipse.cdt.ui.PersistableCElementFactory" path="/libtdrf" type="4"/>
+<item factoryID="org.eclipse.cdt.ui.PersistableCElementFactory" path="/device" type="4"/>
+<item factoryID="org.eclipse.cdt.ui.PersistableCElementFactory" path="/libtdgeoloc" type="4"/>
+<item factoryID="org.eclipse.cdt.ui.PersistableCElementFactory" path="/CMSIS" type="4"/>
+<item factoryID="org.eclipse.cdt.ui.PersistableCElementFactory" path="/libtdcore" type="4"/>
+<item factoryID="org.eclipse.cdt.ui.PersistableCElementFactory" path="/libtddrivers" type="4"/>
+<item factoryID="org.eclipse.cdt.ui.PersistableCElementFactory" path="/libtdsensor" type="4"/>
+<item factoryID="org.eclipse.cdt.ui.PersistableCElementFactory" path="/emlib" type="4"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.cdt.ui.CElementWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1401386856557_2" label="Firmware" name="Firmware">
+<item factoryID="org.eclipse.cdt.ui.PersistableCElementFactory" path="/TD1208" type="4"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.cdt.ui.CElementWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1401386907932_3" label="Samples" name="Samples">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/at_extended" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/lan_tx" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/td12xx_template" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/watchdog" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/button_poll" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/lan_rx" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/sigfox" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/blink" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/hot_cold" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/button_interrupt" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/sensor_gateway" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/sensor_transmitter" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/at_standard" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/sensor_device" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/gateway" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/scheduler_blink" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/scheduler_multiple" type="4"/>
+</workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1401357793010_0" label="Window Working Set" name="Aggregate for window 1401357793010"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1401386915635_4" label="Multiple Working Sets" name="Aggregate:Common:Firmware:Samples:">
+<workingSet IMemento.internal.id="Common"/>
+<workingSet IMemento.internal.id="Firmware"/>
+<workingSet IMemento.internal.id="Samples"/>
+</workingSet>
+</workingSetManager>

@@ -1,0 +1,64 @@
+/**
+\mainpage libtdsensor
+
+\section Overview
+
+The tdsensor library are high-level functions to send Sigfox frames according to Telecom Design protocol allowing
+lost frames detection, automatic frames repetitions and gateway functions.
+
+It provides monitoring functions such as temperature, IO, keepalive functions to automatically send frames depending
+on user-defined conditions.
+
+It also provides high level functions for LAN management.
+
+TD_SENSOR_Init should be called within UserSetup and TD_SENSOR_Process should be called within UserLoop for proper behaviour.
+
+\section Detailed Description
+
+\subsection Monitoring
+file: td_sensor.h
+
+Provides many functions to automatically handles some event and either call a user function and/or send a Sigfox
+frame.
+
+\subsection Sensor LAN Gateway
+file: td_sensor_gateway.h
+
+Provide functions to a module which is a gateway which should handles several devices. Allow
+forwarding frames or processing data from a device.
+
+\subsection Sensor LAN Device
+file: td_sensor_device.h
+
+Provide functions to a module which is a device. Allow pairing to a gateway and
+sending sigfox frames via this gateway. Also allow receiving data from the gateway.
+
+\subsection Transmitter
+file: td_sensor_transmitter.h
+
+Frames to transmit handler. Will queue frames and handles automatic retransmission if required. Do not use!
+
+\subsection Sensor LAN
+file: td_sensor_lan.h
+
+Provides sensor monitoring functions. Do not use!
+
+\subsection Utils
+file: td_sensor_utils.h
+
+Provides high-level utility functions.
+
+\section Limitation
+
+\subsection Sensor LAN Gateway
+
+When the gateway registration is opened, the gateway address changes so that new devices can register. Nevertheless in the meanwhile
+previously registered device can not communicate with the gateway anymore.
+
+\section Examples
+
+  - hot_cold: Temperature monitoring example.
+  - sensor_device: Show how to register a device on a gateway and get frames forwarded (device side)
+  - sensor_gateway: Show how to register a device on a gateway and get frames forwarded (gateway side)
+  - sensor_transmitter: Show how to configure the module as a simple transmitter
+*/

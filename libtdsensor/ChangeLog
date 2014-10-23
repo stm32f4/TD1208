@@ -1,0 +1,71 @@
+= Version 1.0.0 =
+  * Initial revision
+
+= Version 2.0.0 =
+
+#### Changes ####
+
+  * Removed the `sensor_config.h` header, now replaced with the more genral `CONFIG` system
+  * Removed all the private headers
+  * Added TD_SENSOR_SendData()
+  * Added TD_SENSOR_EncodeCellPhoneNumber()
+  * Added TD_SENSOR_SendDataCellPhoneNumber()
+  * Added TD_SENSOR_EncodeLocalVoltage()
+  * Added TD_SENSOR_EncodeLocalTemperature()
+  * Added TD_SENSOR_SendEvent()
+  * Added TD_SENSOR_SendEventBootExt()
+  * Added TD_SENSOR_SetTransmissionProfile()
+  * Added TD_SENSOR_MonitorInit()
+  * Added TD_SENSOR_BatteryCallBack()
+  * Added TD_SENSOR_InternalInit()
+  * Added TD_SENSOR_Dump()
+  * Added TD_SENSOR_MonitorSwitchIrq() to monitor a switch using IRQs
+  * Added TD_SENSOR_SetModuleConfiguration()
+  * Added TD_SENSOR_GetCustomBootCause()
+  * Added TD_SENSOR_GetBootCause()
+  * Added TD_SENSOR_SetCustomBootCause()
+  * Added TD_SENSOR_IsBatteryDead()
+  * Added TD_SENSOR_ClearBatteryDead()
+  * Added TD_SENSOR_DEVICE_Data()
+  * Added TD_SENSOR_DEVICE_Register()
+  * Added TD_SENSOR_DEVICE_isRegistered(void)
+  * Added TD_SENSOR_DEVICE_Reset(void)
+	* Added TD_SENSOR_DEVICE_SetDataCallback()
+	* Added TD_SENSOR_DEVICE_SetKeepAliveCallback()
+	* Added TD_SENSOR_DEVICE_StartReception()
+	* Added TD_SENSOR_DEVICE_StartBroadcastReception()
+	* Added TD_SENSOR_DEVICE_StartSynchReception()
+	* Added TD_SENSOR_DEVICE_StopReception()
+	* Added TD_SENSOR_DEVICE_isReceptionEnabled()
+	* Added TD_SENSOR_DEVICE_isBroadcastReceptionEnabled()
+	* Added TD_SENSOR_DEVICE_SetTxOnLanFail()
+	* Added TD_SENSOR_DEVICE_GetTxOnLanFail()
+	* Added TD_SENSOR_DEVICE_SetTxSkipLan()
+	* Added TD_SENSOR_DEVICE_GetTxSkipLan()
+	* Added TD_SENSOR_DEVICE_GetAddress()
+	* Added TD_SENSOR_DEVICE_SetAddress()
+	* Added TD_SENSOR_DEVICE_GetBroadcastMask()
+	* Added TD_SENSOR_DEVICE_SetAsynchronousForward()
+	* Added TD_SENSOR_GATEWAY_FrameReceived()
+	* Added TD_SENSOR_GATEWAY_IsReceptionEnabled()
+	* Added TD_SENSOR_GATEWAY_AppendDevice()
+	* Added TD_SENSOR_GATEWAY_SendDataByAddress()
+	* Added TD_SENSOR_GATEWAY_SendDataBroadcast()
+	* Added TD_SENSOR_GATEWAY_SendKeepAliveBroadcast()
+	* Added TD_SENSOR_GATEWAY_SetDataCallback()
+	* Added TD_SENSOR_GATEWAY_GetDeviceCount()
+	* Added TD_SENSOR_GATEWAY_GetDeviceList()
+	* Added TD_SENSOR_TRANSMITTER_SetRetry()
+	* Added TD_SENSOR_TRANSMITTER_LenToRealDuration()
+	* Added TD_SENSOR_UTILS_BitConcat()
+
+#### Additions ####
+
+##### **libtdsensor** #####
+
+  * Added a retransmission profile system
+  * Added a custom BootEvent
+  * Added queue handling for message transmission
+  * Added a *forward* option (optional gateway)
+  * Extension of the **Device** and **Gateway** APIs
+  * Extension of the set of Sensor Events

@@ -1,0 +1,5 @@
+architecture=cortex-m3
+board=---  none ---
+chip=EFM32G210F128
+eclipse.preferences.version=1
+vendor=SiliconLabs

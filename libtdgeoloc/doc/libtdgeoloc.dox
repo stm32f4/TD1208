@@ -1,0 +1,66 @@
+/**
+\mainpage libtdgeoloc
+
+\section Overview
+
+The tdgeoloc library are high-level functions to make use of the on-board GPS and accelerometer. Requires Sensor 
+and switch monitoring to be properly initialized. Please always keep TD_SENSOR_MAX_SWITCH >= 1/2 if you use
+gps and/or accelerometer.
+
+\section Detailed Description
+
+\subsection GPS
+file: td_geoloc.h
+
+Provide a GSP start and stop function with an optional timeout. In addition TD_GEOLOC_Init must
+be called in UserSetup after TD_SENSOR_Init and TD_GEOLOC_Process in UserLoop. TD_GEOLOC_Process will then call the
+registered user callback when updated position information are available.
+
+\subsection Accelero
+file: td_accelero.h
+
+Provide two monitoring functions. One to process events and one to process raw data. In addition
+TD_ACCELERO_Init must be called in UserSetup after TD_SENSOR_Init and TD_ACCELERO_Process in UserLoop.
+TD_ACCELERO_Process will then call the registered user callback when appropriate.
+
+\subsection Sensor Data Geoloc
+file: sensor_data_geoloc.h
+
+Sensor encoder to send position information via Sigfox. Provide several lossy compression to allow
+concatenation of several kind of information into a single frame.
+
+\subsection NMEA Parser
+file: nmea_parser.h
+
+The NMEA parser is used to provide fix information to the user from a raw NMEA stream. The
+only user function which should be called from an application is TD_NMEA_EnableOutput which
+allow displaying all or specific parsed NMEA commands.
+
+\section Limitation
+
+Information from both GPS and accelerometer is provided asynchronously so that all ressources keep being shared at any time.
+The counterpart is of course potential latency between an event and the execution of the user callback. The user callback
+is called inside the associated Process function (either TD_GEOLOC_Process or TD_GEOLOC_Accelero) which should itself be called in
+UserLoop. The resulting latency depends therefore on the other functions begin called within UserLoop.
+
+\subsection GPS
+
+Accurate timestamping through to the GPS is currently not provided as the pin is shared with data ready information.
+Such information should be available in the future.
+
+\subsection Accelero
+
+As only one interrupt pin is available on the Accelerometer, either data or event monitoring can be performed
+but not both at same time.
+
+\section Examples
+
+Several examples based on the GPS and the Accelerometer can be found under /examples/geoloc
+
+- accelero_data: read raw acceleration data for user processing
+- accelero_event: trigger a callback on specific acceleration event
+- geoloc_fix: display currently available decoded GPS information
+- geoloc_nmea: display raw NMEA output from the GPS
+- geoloc_fix_timer: trigger a fix and send the module position at given interval
+- geoloc_fix_move: trigger a fix and send the module each time it moves
+*/

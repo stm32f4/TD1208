@@ -1,0 +1,11 @@
+eclipse.preferences.version=1
+environment/project/ilg.gnuarmeclipse.managedbuild.cross.config.lib.debug.243376508/PATH/delimiter=;
+environment/project/ilg.gnuarmeclipse.managedbuild.cross.config.lib.debug.243376508/PATH/operation=replace
+environment/project/ilg.gnuarmeclipse.managedbuild.cross.config.lib.debug.243376508/PATH/value=C\:\\G++ARM\\bin
+environment/project/ilg.gnuarmeclipse.managedbuild.cross.config.lib.debug.243376508/append=true
+environment/project/ilg.gnuarmeclipse.managedbuild.cross.config.lib.debug.243376508/appendContributed=true
+environment/project/ilg.gnuarmeclipse.managedbuild.cross.config.lib.release.1058910698/PATH/delimiter=;
+environment/project/ilg.gnuarmeclipse.managedbuild.cross.config.lib.release.1058910698/PATH/operation=replace
+environment/project/ilg.gnuarmeclipse.managedbuild.cross.config.lib.release.1058910698/PATH/value=C\:\\G++ARM\\bin
+environment/project/ilg.gnuarmeclipse.managedbuild.cross.config.lib.release.1058910698/append=true
+environment/project/ilg.gnuarmeclipse.managedbuild.cross.config.lib.release.1058910698/appendContributed=true
