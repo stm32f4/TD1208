@@ -7,5 +7,6 @@
 **/.log
 **/release/
 **/debug/
-**/.history/
-**/.indexes/
+**/.history/**
+**/.indexes/**
+**/buildstate/**
