@@ -5,8 +5,8 @@
 *.map
 *.log
 **/.log
-**/release/
-**/debug/
+**/release/**
+**/debug/**
 **/.history/**
 **/.indexes/**
 **/buildstate/**
