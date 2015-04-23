@@ -172,7 +172,7 @@ extern "C" {
 	 *   On all other sources files, all parameters are available :
 	 *   tfp_printf("Max timer : %d, MaxQueue : %d\r\n",CONFIG_TD_SCHEDULER_MAX_TIMER,CONFIGTD_SCHEDULER_MAX_QUEUE);
 	 *
-	 *    Define                                 | Level        | Type      |      Usage     | Description
+	 *    Define                                  | Level        | Type      |      Usage     | Description
 	 *    :---------------------------------------|:------------:|:---------:|:--------------:|:--------------------------------------------------------------------
 	 *    MANUFACTURER                            | Applicative  | string    |  AT commands   | Manufacturer name
 	 *    PRODUCT                                 | Applicative  | string    |  AT commands   | Product name
@@ -202,7 +202,7 @@ extern "C" {
 	 *
 	 *   These parameters are RF SYSTEM parameters do not MESS with them!
 	 *
-	 *   Define                                 | Level        | Type      |      Usage          | Description
+	 *   Define                                  | Level        | Type      |      Usage          | Description
 	 *   :---------------------------------------|:------------:|:---------:|:-------------------:|:------------------------------------------------------------------------------------
 	 *   TD_LOADER_TRANSMITTER				     | Applicative  | define    |  Bootloader         | if this define present, code will stop in bootloader for loader/transmit function
 	 *   POWER_CRYSTAL_PORT		 	             | Chip         | gpioPortx |  Bootloader         | Set port of RF TCXO
@@ -218,7 +218,7 @@ extern "C" {
 	 *
 	 *   These parameters are GPS SYSTEM parameters do not MESS with them!
 	 *
-	 *   Define                                 | Level        | Type      |      Usage     | Description
+	 *   Define                                  | Level        | Type      |      Usage     | Description
 	 *   :---------------------------------------|:------------:|:---------:|:--------------:|-------------------------------
 	 *   GPS_CS_PORT		 	                 | Chip         | gpioPortx |  Bootloader    | set port of GPS CS
 	 *   GPS_CS_BIT		                         | Chip         | number    |  Bootloader    | set bit of GPS CS
@@ -234,14 +234,14 @@ extern "C" {
 	 *   These parameters are for General code use. It will force to include (or remove) blocks of code.
 	 *   In general use case theses parameters are not useful, they are just here for special use case
 	 *
-	 *   Define                                 | Description
+	 *   Define                                  | Description
 	 *   :---------------------------------------|-------------------------------
 	 *   TD_GEOLOC_USE_CODE		 	 			 |Force use/not use the libtdgeoloc dynamic data
 	 *   TD_SENSOR_USE_CODE		 	 			 |Force use/not use the libtdsensor dynamic data
 
 	 *   These parameters are Code Size reduction parameters. If you remove code and use it after that, it will throw a Trap
 	 *
-	 *   Define                                 | Description
+	 *   Define                                  | Description
 	 *   :---------------------------------------|-------------------------------
 	 *   TD_SENSOR_GATEWAY_REMOVE_CODE		 	 |Remove Sensor Gateway code
 	 *   TD_SENSOR_TRANSMITTER_REMOVE_CODE		 |Remove Sensor Transmitter code
@@ -507,9 +507,15 @@ extern "C" {
 	 * default value : TIM2_BIT (TDxxxx modules)
 	 */
 #ifndef PRODUCT_LED_BIT
-//#define PRODUCT_LED_BIT TIM2_BIT
-//THA alternate LED port due to chip issue on port TIM2_BIT
-#define PRODUCT_LED_BIT ADC0_BIT
+/***********************************************************************************
+ *      _                                                                   _      *
+ *     / \                                                                 / \     *
+ *    / ! \   THA alternate LED port due to chip issue on port TIM2_BIT   / ! \    *
+ *   /_____\                                                             /_____\   *
+ *                                                                                 *
+ ***********************************************************************************/
+#define PRODUCT_LED_BIT TIM2_BIT
+//#define PRODUCT_LED_BIT ADC0_BIT
 #endif
 
 	/* PRODUCT_LED_BLINK : set to 1, blink led during each flash sector write

@@ -116,28 +116,35 @@ void TD_USER_Setup(void) {
 			TD_UART_Stop);
 
 	// Define variables version to avoid wrong flash init
+	tfp_printf("Define variables version to avoid wrong flash init.\r\n");
 	TD_FLASH_SetVariablesVersion(FLASH_VARIABLES_VERSION);
 
 #if AT_CORE
+	tfp_printf("Add Core AT parser.\r\n");
 	AT_AddExtension(&core_extension);
 #endif
 #if AT_RADIO_INFO
+	tfp_printf("Add Radio AT parser.\r\n");
 	AT_AddExtension(&radio_extension);
 #endif
 #if AT_SIGFOX
+	tfp_printf("Add Sigfox AT parser.\r\n");
 	AT_AddExtension(&sigfox_extension);
 #endif
 #if AT_LAN_RF
+	tfp_printf("Add LAN AT parser.\r\n");
 	AT_AddExtension(&lan_extension);
 #endif
 
 #if AT_SENSOR
+	tfp_printf("Add Sensor AT parser.\r\n");
 	AT_AddExtension(&sensor_extension);
 	AT_AddExtension(&sensor_lan_extension);
 	AT_AddExtension(&sensor_send_extension);
 #endif
 
 #if AT_GEOLOC
+	tfp_printf("Add GPS AT parser.\r\n");
 	AT_AddExtension(&geoloc_extension);
 	AT_AddExtension(&accelero_extension);
 #endif
@@ -148,6 +155,7 @@ void TD_USER_Setup(void) {
 #if AT_SENSOR
 
 	//Initialize Sensor
+	tfp_printf("Initialize Sensor.\r\n");
 	TD_SENSOR_Init(TD_SENSOR_GetModuleType(), TD_LAN_GetFrequency(),
 			TD_LAN_GetPowerLevel());
 #endif
@@ -155,19 +163,21 @@ void TD_USER_Setup(void) {
 #if AT_GEOLOC
 
 	//Initialize GPS
+	tfp_printf("Initialize GPS.\r\n");
 	TD_GEOLOC_Init();
 
 	//Initialize Accelero
+	tfp_printf("Initialize Accelerometer.\r\n");
 	TD_ACCELERO_Init();
 #endif
 
 	// Register a task for the heartbeat
+	tfp_printf("Register LED task.\r\n");
 	Scheduler_LED_Id = TD_SCHEDULER_Append(10, 0, 0, 0xFF, TD_USER_Heartbeat,
 			1);
 
-	// Register a task for the heartbeat
-	Scheduler_BMP180_Id = TD_SCHEDULER_Append(30, 0, 0, 0xFF, TD_USER_Measure,
-			0);
+	// Register a task for the measure
+	//Scheduler_BMP180_Id = TD_SCHEDULER_Append(30, 0, 0, 0xFF, TD_USER_Measure, 0);
 }
 
 /**
@@ -175,6 +185,7 @@ void TD_USER_Setup(void) {
  **/
 void TD_USER_Loop(void) {
 	int c;
+	tfp_printf("Process User Loop.\r\n");
 
 #if AT_LAN_RF
 
@@ -197,12 +208,12 @@ void TD_USER_Loop(void) {
 
 	while ((c = TD_UART_GetChar()) >= 0) {
 		// LED On
-		GPIO->P[3].DOUTSET = 1 << ADC0_BIT;
+		GPIO->P[3].DOUTSET = 1 << PRODUCT_LED_BIT;
 
 		AT_Parse(c);
 
 		// LED Off
-		GPIO->P[3].DOUTCLR = 1 << ADC0_BIT;
+		GPIO->P[3].DOUTCLR = 1 << PRODUCT_LED_BIT;
 
 	}
 }
@@ -211,15 +222,14 @@ void TD_USER_Loop(void) {
  * @brief  Toggle LED
  **/
 void TD_USER_Heartbeat(uint32_t arg, uint8_t repetition) {
-	GPIO->P[3].DOUTTGL = 1 << ADC0_BIT;
 	if (arg == 0) {
 		// LED Off
-		GPIO->P[3].DOUTCLR = 1 << ADC0_BIT;
+		GPIO->P[3].DOUTCLR = 1 << PRODUCT_LED_BIT;
 		TD_SCHEDULER_SetArg(Scheduler_LED_Id, 10);
-		TD_SCHEDULER_SetInterval(Scheduler_LED_Id, 10, 0, 1);
+		TD_SCHEDULER_SetInterval(Scheduler_LED_Id, 10, 0, 0);
 	} else {
 		// LED On
-		GPIO->P[3].DOUTSET = 1 << ADC0_BIT;
+		GPIO->P[3].DOUTSET = 1 << PRODUCT_LED_BIT;
 		TD_SCHEDULER_SetArg(Scheduler_LED_Id, 0);
 		TD_SCHEDULER_SetInterval(Scheduler_LED_Id, 0, 0x100, 0);
 	}

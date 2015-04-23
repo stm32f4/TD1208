@@ -4,10 +4,10 @@
 		<extension point="org.eclipse.cdt.core.LanguageSettingsProvider">
 			<provider id="ilg.gnuarmeclipse.managedbuild.cross.GCCBuiltinSpecsDetector">
 				<language id="org.eclipse.cdt.core.gcc">
-					<entry kind="includePath" name="C:/G++ARM/lib/gcc/arm-none-eabi/4.8.1/include">
+					<entry kind="includePath" name="C:/G++ARM/lib/gcc/arm-none-eabi/4.8.3/include">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="includePath" name="C:/G++ARM/lib/gcc/arm-none-eabi/4.8.1/include-fixed">
+					<entry kind="includePath" name="C:/G++ARM/lib/gcc/arm-none-eabi/4.8.3/include-fixed">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="includePath" name="C:/G++ARM/arm-none-eabi/include">
@@ -115,13 +115,13 @@
 					<entry kind="macro" name="__CHAR_BIT__" value="8">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="macro" name="__CS_SOURCERYGXX_MAJ__" value="2013">
+					<entry kind="macro" name="__CS_SOURCERYGXX_MAJ__" value="2014">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="macro" name="__CS_SOURCERYGXX_MIN__" value="11">
+					<entry kind="macro" name="__CS_SOURCERYGXX_MIN__" value="5">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="macro" name="__CS_SOURCERYGXX_REV__" value="24">
+					<entry kind="macro" name="__CS_SOURCERYGXX_REV__" value="28">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__DA_FBIT__" value="31">
@@ -367,7 +367,7 @@
 					<entry kind="macro" name="__GNUC_MINOR__" value="8">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="macro" name="__GNUC_PATCHLEVEL__" value="1">
+					<entry kind="macro" name="__GNUC_PATCHLEVEL__" value="3">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__GNUC_STDC_INLINE__" value="1">
@@ -1045,7 +1045,7 @@
 					<entry kind="macro" name="__UTQ_IBIT__" value="0">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="macro" name="__VERSION__" value="&quot;4.8.1&quot;">
+					<entry kind="macro" name="__VERSION__" value="&quot;4.8.3 20140320 (prerelease)&quot;">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__VFP_FP__" value="1">
@@ -1080,19 +1080,19 @@
 					</entry>
 				</language>
 				<language id="org.eclipse.cdt.core.g++">
-					<entry kind="includePath" name="C:/G++ARM/arm-none-eabi/include/c++/4.8.1">
+					<entry kind="includePath" name="C:/G++ARM/arm-none-eabi/include/c++/4.8.3">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="includePath" name="C:/G++ARM/arm-none-eabi/include/c++/4.8.1/arm-none-eabi/thumb2">
+					<entry kind="includePath" name="C:/G++ARM/arm-none-eabi/include/c++/4.8.3/arm-none-eabi/thumb2">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="includePath" name="C:/G++ARM/arm-none-eabi/include/c++/4.8.1/backward">
+					<entry kind="includePath" name="C:/G++ARM/arm-none-eabi/include/c++/4.8.3/backward">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="includePath" name="C:/G++ARM/lib/gcc/arm-none-eabi/4.8.1/include">
+					<entry kind="includePath" name="C:/G++ARM/lib/gcc/arm-none-eabi/4.8.3/include">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="includePath" name="C:/G++ARM/lib/gcc/arm-none-eabi/4.8.1/include-fixed">
+					<entry kind="includePath" name="C:/G++ARM/lib/gcc/arm-none-eabi/4.8.3/include-fixed">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="includePath" name="C:/G++ARM/arm-none-eabi/include">
@@ -1200,13 +1200,13 @@
 					<entry kind="macro" name="__CHAR_BIT__" value="8">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="macro" name="__CS_SOURCERYGXX_MAJ__" value="2013">
+					<entry kind="macro" name="__CS_SOURCERYGXX_MAJ__" value="2014">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="macro" name="__CS_SOURCERYGXX_MIN__" value="11">
+					<entry kind="macro" name="__CS_SOURCERYGXX_MIN__" value="5">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="macro" name="__CS_SOURCERYGXX_REV__" value="24">
+					<entry kind="macro" name="__CS_SOURCERYGXX_REV__" value="28">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__DA_FBIT__" value="31">
@@ -1458,7 +1458,7 @@
 					<entry kind="macro" name="__GNUC_MINOR__" value="8">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="macro" name="__GNUC_PATCHLEVEL__" value="1">
+					<entry kind="macro" name="__GNUC_PATCHLEVEL__" value="3">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__GNUC_STDC_INLINE__" value="1">
@@ -2139,7 +2139,7 @@
 					<entry kind="macro" name="__UTQ_IBIT__" value="0">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="macro" name="__VERSION__" value="&quot;4.8.1&quot;">
+					<entry kind="macro" name="__VERSION__" value="&quot;4.8.3 20140320 (prerelease)&quot;">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__VFP_FP__" value="1">
@@ -2186,10 +2186,10 @@
 		<extension point="org.eclipse.cdt.core.LanguageSettingsProvider">
 			<provider id="ilg.gnuarmeclipse.managedbuild.cross.GCCBuiltinSpecsDetector">
 				<language id="org.eclipse.cdt.core.gcc">
-					<entry kind="includePath" name="C:/G++ARM/lib/gcc/arm-none-eabi/4.8.1/include">
+					<entry kind="includePath" name="C:/G++ARM/lib/gcc/arm-none-eabi/4.8.3/include">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="includePath" name="C:/G++ARM/lib/gcc/arm-none-eabi/4.8.1/include-fixed">
+					<entry kind="includePath" name="C:/G++ARM/lib/gcc/arm-none-eabi/4.8.3/include-fixed">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="includePath" name="C:/G++ARM/arm-none-eabi/include">
@@ -2297,13 +2297,13 @@
 					<entry kind="macro" name="__CHAR_BIT__" value="8">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="macro" name="__CS_SOURCERYGXX_MAJ__" value="2013">
+					<entry kind="macro" name="__CS_SOURCERYGXX_MAJ__" value="2014">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="macro" name="__CS_SOURCERYGXX_MIN__" value="11">
+					<entry kind="macro" name="__CS_SOURCERYGXX_MIN__" value="5">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="macro" name="__CS_SOURCERYGXX_REV__" value="24">
+					<entry kind="macro" name="__CS_SOURCERYGXX_REV__" value="28">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__DA_FBIT__" value="31">
@@ -2549,7 +2549,7 @@
 					<entry kind="macro" name="__GNUC_MINOR__" value="8">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="macro" name="__GNUC_PATCHLEVEL__" value="1">
+					<entry kind="macro" name="__GNUC_PATCHLEVEL__" value="3">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__GNUC_STDC_INLINE__" value="1">
@@ -3230,7 +3230,7 @@
 					<entry kind="macro" name="__UTQ_IBIT__" value="0">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="macro" name="__VERSION__" value="&quot;4.8.1&quot;">
+					<entry kind="macro" name="__VERSION__" value="&quot;4.8.3 20140320 (prerelease)&quot;">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__VFP_FP__" value="1">
@@ -3265,19 +3265,19 @@
 					</entry>
 				</language>
 				<language id="org.eclipse.cdt.core.g++">
-					<entry kind="includePath" name="C:/G++ARM/arm-none-eabi/include/c++/4.8.1">
+					<entry kind="includePath" name="C:/G++ARM/arm-none-eabi/include/c++/4.8.3">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="includePath" name="C:/G++ARM/arm-none-eabi/include/c++/4.8.1/arm-none-eabi/thumb2">
+					<entry kind="includePath" name="C:/G++ARM/arm-none-eabi/include/c++/4.8.3/arm-none-eabi/thumb2">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="includePath" name="C:/G++ARM/arm-none-eabi/include/c++/4.8.1/backward">
+					<entry kind="includePath" name="C:/G++ARM/arm-none-eabi/include/c++/4.8.3/backward">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="includePath" name="C:/G++ARM/lib/gcc/arm-none-eabi/4.8.1/include">
+					<entry kind="includePath" name="C:/G++ARM/lib/gcc/arm-none-eabi/4.8.3/include">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="includePath" name="C:/G++ARM/lib/gcc/arm-none-eabi/4.8.1/include-fixed">
+					<entry kind="includePath" name="C:/G++ARM/lib/gcc/arm-none-eabi/4.8.3/include-fixed">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="includePath" name="C:/G++ARM/arm-none-eabi/include">
@@ -3385,13 +3385,13 @@
 					<entry kind="macro" name="__CHAR_BIT__" value="8">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="macro" name="__CS_SOURCERYGXX_MAJ__" value="2013">
+					<entry kind="macro" name="__CS_SOURCERYGXX_MAJ__" value="2014">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="macro" name="__CS_SOURCERYGXX_MIN__" value="11">
+					<entry kind="macro" name="__CS_SOURCERYGXX_MIN__" value="5">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="macro" name="__CS_SOURCERYGXX_REV__" value="24">
+					<entry kind="macro" name="__CS_SOURCERYGXX_REV__" value="28">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__DA_FBIT__" value="31">
@@ -3643,7 +3643,7 @@
 					<entry kind="macro" name="__GNUC_MINOR__" value="8">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="macro" name="__GNUC_PATCHLEVEL__" value="1">
+					<entry kind="macro" name="__GNUC_PATCHLEVEL__" value="3">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__GNUC_STDC_INLINE__" value="1">
@@ -4327,7 +4327,7 @@
 					<entry kind="macro" name="__UTQ_IBIT__" value="0">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="macro" name="__VERSION__" value="&quot;4.8.1&quot;">
+					<entry kind="macro" name="__VERSION__" value="&quot;4.8.3 20140320 (prerelease)&quot;">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__VFP_FP__" value="1">

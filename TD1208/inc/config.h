@@ -98,7 +98,7 @@
 #else
 
 /** TD LAN RF AT parser extension */
-#define AT_LAN_RF				0
+#define AT_LAN_RF				1
 
 #endif
 
@@ -117,7 +117,7 @@
 #else
 
 /** TD Sensor AT parser extension */
-#define AT_SENSOR				0
+#define AT_SENSOR				1
 
 #endif
 
