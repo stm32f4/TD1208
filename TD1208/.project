@@ -7,8 +7,8 @@
 		<project>device</project>
 		<project>emlib</project>
 		<project>libtdcore</project>
-		<project>libtdgeoloc</project>
 		<project>libtdrf</project>
+		<project>libtdgeoloc</project>
 		<project>libtdsensor</project>
 	</projects>
 	<buildSpec>

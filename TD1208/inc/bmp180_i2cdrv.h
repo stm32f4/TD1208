@@ -39,8 +39,6 @@ extern "C" {
  *****************************   PROTOTYPES   **********************************
  ******************************************************************************/
 
-void I2CDRV_Init(void);
-I2C_TransferReturn_TypeDef I2CDRV_Transfer(I2C_TransferSeq_TypeDef *seq);
 int BMP180_WriteReg(uint8_t addr, uint8_t reg, uint8_t value);
 uint16_t BMP180_ReadReg(uint8_t addr, uint8_t reg);
 uint8_t BMP180_Read8bitReg(uint8_t addr, uint8_t reg);

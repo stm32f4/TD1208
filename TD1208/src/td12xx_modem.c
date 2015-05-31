@@ -41,7 +41,9 @@
 #include <td_uart.h>
 #include <td_printf.h>
 #include <at_parse.h>
+#include <i2cdrv.h>
 #include <bmp180_i2cdrv.h>
+#include <si7020_i2cdrv.h>
 
 #if AT_CORE
 #include <at_core.h>
@@ -173,11 +175,16 @@ void TD_USER_Setup(void) {
 
 	// Register a task for the heartbeat
 	tfp_printf("Register LED task.\r\n");
-	Scheduler_LED_Id = TD_SCHEDULER_Append(10, 0, 0, 0xFF, TD_USER_Heartbeat,
+	Scheduler_LED_Id = TD_SCHEDULER_Append(5, 0, 0, 0xFF, TD_USER_Heartbeat,
 			1);
 
 	// Register a task for the measure
-	//Scheduler_BMP180_Id = TD_SCHEDULER_Append(30, 0, 0, 0xFF, TD_USER_Measure, 0);
+	Scheduler_BMP180_Id = TD_SCHEDULER_Append(10, 0, 0, 0xFF, TD_USER_Measure,
+			0);
+
+	// Initialize I2C
+	I2CDRV_Init();
+
 }
 
 /**
@@ -185,7 +192,7 @@ void TD_USER_Setup(void) {
  **/
 void TD_USER_Loop(void) {
 	int c;
-	tfp_printf("Process User Loop.\r\n");
+	//tfp_printf("Process User Loop.\r\n");
 
 #if AT_LAN_RF
 
@@ -208,13 +215,12 @@ void TD_USER_Loop(void) {
 
 	while ((c = TD_UART_GetChar()) >= 0) {
 		// LED On
-		GPIO->P[3].DOUTSET = 1 << PRODUCT_LED_BIT;
+		GPIO->P[PRODUCT_LED_PORT].DOUTSET = 1 << PRODUCT_LED_BIT;
 
 		AT_Parse(c);
 
 		// LED Off
-		GPIO->P[3].DOUTCLR = 1 << PRODUCT_LED_BIT;
-
+		GPIO->P[PRODUCT_LED_PORT].DOUTCLR = 1 << PRODUCT_LED_BIT;
 	}
 }
 
@@ -224,12 +230,12 @@ void TD_USER_Loop(void) {
 void TD_USER_Heartbeat(uint32_t arg, uint8_t repetition) {
 	if (arg == 0) {
 		// LED Off
-		GPIO->P[3].DOUTCLR = 1 << PRODUCT_LED_BIT;
+		GPIO->P[PRODUCT_LED_PORT].DOUTCLR = 1 << PRODUCT_LED_BIT;
 		TD_SCHEDULER_SetArg(Scheduler_LED_Id, 10);
 		TD_SCHEDULER_SetInterval(Scheduler_LED_Id, 10, 0, 0);
 	} else {
 		// LED On
-		GPIO->P[3].DOUTSET = 1 << PRODUCT_LED_BIT;
+		GPIO->P[PRODUCT_LED_PORT].DOUTSET = 1 << PRODUCT_LED_BIT;
 		TD_SCHEDULER_SetArg(Scheduler_LED_Id, 0);
 		TD_SCHEDULER_SetInterval(Scheduler_LED_Id, 0, 0x100, 0);
 	}
@@ -251,13 +257,23 @@ void TD_USER_Measure(uint32_t arg, uint8_t repetition) {
 
 	allmes measure;
 
-	//  Fist time just do I2C init
+	//  Fist time just do sensor init
 	if (arg == 0) {
 		// Initialize bmp180
-		I2CDRV_Init();
 		BMP180_GetCalData();
-		TD_SCHEDULER_SetArg(Scheduler_BMP180_Id, 1);
 		tfp_printf("BMP180 Initialized.\r\n");
+
+		// Check Si7020
+		uint8_t chipId;
+		uint8_t fwRev;
+		Si7020_GetFirmwareRevision(&fwRev);
+		if (Si7020_Detect(&chipId)) {
+			tfp_printf("SI7020 with chip Id %X and firmware %X detected.\r\n", chipId, fwRev);
+		} else {
+			tfp_printf("No SI7020 detected.\r\n");
+		}
+
+		TD_SCHEDULER_SetArg(Scheduler_BMP180_Id, 1);
 	}
 
 	// Only send if counter is 1
@@ -273,21 +289,31 @@ void TD_USER_Measure(uint32_t arg, uint8_t repetition) {
 		measure.mes.temp = temperature;
 		measure.mes.temp = measure.mes.temp / 10.0f;
 
+		uint32_t humidity = 0;
+		int32_t humTemperature = 0;
+		Si7020_MeasureRHAndTemp(&humidity, &humTemperature);
+
+
 		// Trace to serial
+		tfp_printf("Bmp180 T: %d  P: %u    ", temperature, pressure);
+		tfp_printf("Si7020 T: %d  H: %u\r\n", humTemperature, humidity);
+
+		/**
 		tfp_printf("Temp: %X %X %X %X Press: %X %X %X %X\r\n", measure.bmes[0],
 				measure.bmes[1], measure.bmes[2], measure.bmes[3],
 				measure.bmes[4], measure.bmes[5], measure.bmes[6],
 				measure.bmes[7]);
+		*/
 
 		// Send to sigfox
-		GPIO->P[3].DOUTSET = 1 << ADC0_BIT;
-		TD_SIGFOX_Send(measure.bmes, 8, 2);
-		GPIO->P[3].DOUTCLR = 1 << ADC0_BIT;
-		tfp_printf("Data sent to sigfox.\r\n");
+		//GPIO->P[PRODUCT_LED_PORT].DOUTSET = 1 << PRODUCT_LED_BIT;
+		//TD_SIGFOX_Send(measure.bmes, 8, 2);
+		//GPIO->P[PRODUCT_LED_PORT].DOUTCLR = 1 << PRODUCT_LED_BIT;
+		//tfp_printf("Data sent to sigfox.\r\n");
 	}
 
 	// When counter reaches 60 send again next time
-	if (arg == 60) {
+	if (arg == 1) {
 		arg = 0;
 	}
 
