@@ -479,6 +479,15 @@ extern "C" {
 #error("You must specify a product type : PRODUCT_TYPE=x. TD1202_EVB:0 TD1204_EVB:8 TD1205_EVB:9 TD1208_EVB:10")
 #endif
 
+
+	 /***********************************************************************************
+	  *      _                                                                   _      *
+	  *     / \                                                                 / \     *
+	  *    / ! \   THA alternate LED port default is PORT2 TIM2_BI         T   / ! \    *
+	  *   /_____\                                                             /_____\   *
+	  *                                                                                 *
+	  ***********************************************************************************/
+
 	/* PRODUCT_LED_POLARITY : value to set on PIN TIM2(or PRODUCT_LED_PORT/PRODUCT_LED_BIT) to turn OFF information led (used by the integrated bootloader)
 	 * default value : led active high
 	 */
@@ -499,6 +508,7 @@ extern "C" {
 	/* PRODUCT_LED_PORT : port used to turn on information led (used by the integrated bootloader)
 	 * default value : TIM2_PORT (TDxxxx modules)
 	 */
+
 #ifndef PRODUCT_LED_PORT
 #define PRODUCT_LED_PORT TIM2_PORT
 #endif
@@ -507,13 +517,7 @@ extern "C" {
 	 * default value : TIM2_BIT (TDxxxx modules)
 	 */
 #ifndef PRODUCT_LED_BIT
-/***********************************************************************************
- *      _                                                                   _      *
- *     / \                                                                 / \     *
- *    / ! \   THA alternate LED port due to chip issue on port TIM2_BIT   / ! \    *
- *   /_____\                                                             /_____\   *
- *                                                                                 *
- ***********************************************************************************/
+
 #define PRODUCT_LED_BIT TIM2_BIT
 //#define PRODUCT_LED_BIT ADC0_BIT
 #endif
