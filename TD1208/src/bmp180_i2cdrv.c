@@ -71,7 +71,7 @@ int BMP180_WriteReg(uint8_t addr, uint8_t reg, uint8_t value){
     
     I2C_TransferSeq_TypeDef seq;
     I2C_TransferReturn_TypeDef ret;
-    uint8_t data[3];
+    uint8_t data[2];
     
     seq.addr = addr;
     seq.flags = I2C_FLAG_WRITE;

@@ -58,9 +58,9 @@
 									<listOptionValue builtIn="false" value="EFM32G210F128"/>
 									<listOptionValue builtIn="false" value="DEBUG"/>
 									<listOptionValue builtIn="false" value="DEBUG_EFM"/>
-									<listOptionValue builtIn="false" value="MODULE_REVISION=REVISION_TD1204"/>
 									<listOptionValue builtIn="false" value="PRODUCT_LED_PORT=USR3_PORT"/>
 									<listOptionValue builtIn="false" value="PRODUCT_LED_BIT=USR3_BIT"/>
+									<listOptionValue builtIn="false" value="MODULE_REVISION=REVISION_TD1208"/>
 								</option>
 								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.input.1800438010" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.input"/>
 							</tool>
@@ -80,9 +80,9 @@
 									<listOptionValue builtIn="false" value="EFM32G210F128"/>
 									<listOptionValue builtIn="false" value="DEBUG"/>
 									<listOptionValue builtIn="false" value="DEBUG_EFM"/>
-									<listOptionValue builtIn="false" value="MODULE_REVISION=REVISION_TD1204"/>
 									<listOptionValue builtIn="false" value="PRODUCT_LED_PORT=USR3_PORT"/>
 									<listOptionValue builtIn="false" value="PRODUCT_LED_BIT=USR3_BIT"/>
+									<listOptionValue builtIn="false" value="MODULE_REVISION=REVISION_TD1208"/>
 								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.std.725743977" name="Language standard" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.std" useByScannerDiscovery="true" value="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.std.default" valueType="enumerated"/>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.verbose.14888610" name="Verbose (-v)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.verbose" useByScannerDiscovery="false" value="false" valueType="boolean"/>
@@ -151,6 +151,7 @@
 				</configuration>
 			</storageModule>
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+			<storageModule moduleId="ilg.gnuarmeclipse.managedbuild.packs"/>
 		</cconfiguration>
 		<cconfiguration id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.1575312750">
 			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.1575312750" moduleId="org.eclipse.cdt.core.settings" name="Release">
@@ -207,9 +208,9 @@
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.defs.805750509" name="Defined symbols (-D)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.assembler.defs" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="EFM32G210F128"/>
 									<listOptionValue builtIn="false" value="NDEBUG"/>
-									<listOptionValue builtIn="false" value="MODULE_REVISION=REVISION_TD1204"/>
 									<listOptionValue builtIn="false" value="PRODUCT_LED_PORT=USR3_PORT"/>
 									<listOptionValue builtIn="false" value="PRODUCT_LED_BIT=USR3_BIT"/>
+									<listOptionValue builtIn="false" value="MODULE_REVISION=REVISION_TD1208"/>
 								</option>
 								<inputType id="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.input.1812073145" superClass="ilg.gnuarmeclipse.managedbuild.cross.tool.assembler.input"/>
 							</tool>
@@ -228,9 +229,9 @@
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.defs.2047749315" name="Defined symbols (-D)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.defs" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="EFM32G210F128"/>
 									<listOptionValue builtIn="false" value="NDEBUG"/>
-									<listOptionValue builtIn="false" value="MODULE_REVISION=REVISION_TD1204"/>
 									<listOptionValue builtIn="false" value="PRODUCT_LED_PORT=USR3_PORT"/>
 									<listOptionValue builtIn="false" value="PRODUCT_LED_BIT=USR3_BIT"/>
+									<listOptionValue builtIn="false" value="MODULE_REVISION=REVISION_TD1208"/>
 								</option>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.std.548061752" name="Language standard" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.std" useByScannerDiscovery="true" value="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.std.default" valueType="enumerated"/>
 								<option id="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.verbose.269408416" name="Verbose (-v)" superClass="ilg.gnuarmeclipse.managedbuild.cross.option.c.compiler.verbose" useByScannerDiscovery="false" value="false" valueType="boolean"/>
