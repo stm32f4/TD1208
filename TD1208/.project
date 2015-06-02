@@ -4,12 +4,6 @@
 	<comment></comment>
 	<projects>
 		<project>CMSIS</project>
-		<project>device</project>
-		<project>emlib</project>
-		<project>libtdcore</project>
-		<project>libtdrf</project>
-		<project>libtdgeoloc</project>
-		<project>libtdsensor</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

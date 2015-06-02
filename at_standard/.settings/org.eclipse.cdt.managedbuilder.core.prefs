@@ -23,6 +23,12 @@ environment/buildEnvironmentInclude/iar.arm.toolchain.project.exe.configuration.
 environment/buildEnvironmentInclude/iar.arm.toolchain.project.exe.configuration.release.v5.4.0.906220437.1842025324.452071840.100311361.75328058/C_INCLUDE/operation=remove
 environment/buildEnvironmentInclude/iar.arm.toolchain.project.exe.configuration.release.v5.4.0.906220437.1842025324.452071840.100311361.75328058/append=true
 environment/buildEnvironmentInclude/iar.arm.toolchain.project.exe.configuration.release.v5.4.0.906220437.1842025324.452071840.100311361.75328058/appendContributed=true
+environment/buildEnvironmentInclude/ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1368550365.94043601/CPATH/delimiter=;
+environment/buildEnvironmentInclude/ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1368550365.94043601/CPATH/operation=remove
+environment/buildEnvironmentInclude/ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1368550365.94043601/C_INCLUDE_PATH/delimiter=;
+environment/buildEnvironmentInclude/ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1368550365.94043601/C_INCLUDE_PATH/operation=remove
+environment/buildEnvironmentInclude/ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1368550365.94043601/append=true
+environment/buildEnvironmentInclude/ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1368550365.94043601/appendContributed=true
 environment/buildEnvironmentInclude/ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.1575312750.1835828235/CPATH/delimiter=;
 environment/buildEnvironmentInclude/ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.1575312750.1835828235/CPATH/operation=remove
 environment/buildEnvironmentInclude/ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.1575312750.1835828235/C_INCLUDE_PATH/delimiter=;
@@ -125,6 +131,10 @@ environment/buildEnvironmentLibrary/iar.arm.toolchain.project.exe.configuration.
 environment/buildEnvironmentLibrary/iar.arm.toolchain.project.exe.configuration.release.v5.4.0.906220437.1842025324.452071840.100311361.75328058/LIBRARY_PATH/operation=remove
 environment/buildEnvironmentLibrary/iar.arm.toolchain.project.exe.configuration.release.v5.4.0.906220437.1842025324.452071840.100311361.75328058/append=true
 environment/buildEnvironmentLibrary/iar.arm.toolchain.project.exe.configuration.release.v5.4.0.906220437.1842025324.452071840.100311361.75328058/appendContributed=true
+environment/buildEnvironmentLibrary/ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1368550365.94043601/LIBRARY_PATH/delimiter=;
+environment/buildEnvironmentLibrary/ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1368550365.94043601/LIBRARY_PATH/operation=remove
+environment/buildEnvironmentLibrary/ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1368550365.94043601/append=true
+environment/buildEnvironmentLibrary/ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1368550365.94043601/appendContributed=true
 environment/buildEnvironmentLibrary/ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.1575312750.1835828235/LIBRARY_PATH/delimiter=;
 environment/buildEnvironmentLibrary/ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.1575312750.1835828235/LIBRARY_PATH/operation=replace
 environment/buildEnvironmentLibrary/ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.1575312750.1835828235/LIBRARY_PATH/value=c\:/g++arm/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2/;c\:/g++arm/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2/;c\:/g++arm/bin/../arm-none-eabi/lib/thumb2/;c\:/g++arm/bin/../lib/gcc/arm-none-eabi/4.8.1/;c\:/g++arm/bin/../lib/gcc/;c\:/g++arm/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/;c\:/g++arm/bin/../arm-none-eabi/lib/

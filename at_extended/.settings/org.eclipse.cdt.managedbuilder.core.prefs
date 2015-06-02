@@ -136,7 +136,7 @@ environment/buildEnvironmentLibrary/ilg.gnuarmeclipse.managedbuild.cross.config.
 environment/buildEnvironmentLibrary/ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1368550365.868348469/append=true
 environment/buildEnvironmentLibrary/ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.1368550365.868348469/appendContributed=true
 environment/buildEnvironmentLibrary/ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.1575312750.708440919/LIBRARY_PATH/delimiter=;
-environment/buildEnvironmentLibrary/ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.1575312750.708440919/LIBRARY_PATH/operation=replace
+environment/buildEnvironmentLibrary/ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.1575312750.708440919/LIBRARY_PATH/operation=remove
 environment/buildEnvironmentLibrary/ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.1575312750.708440919/LIBRARY_PATH/value=c\:/g++arm/bin/../lib/gcc/arm-none-eabi/4.8.1/thumb2/;c\:/g++arm/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/thumb2/;c\:/g++arm/bin/../arm-none-eabi/lib/thumb2/;c\:/g++arm/bin/../lib/gcc/arm-none-eabi/4.8.1/;c\:/g++arm/bin/../lib/gcc/;c\:/g++arm/bin/../lib/gcc/arm-none-eabi/4.8.1/../../../../arm-none-eabi/lib/;c\:/g++arm/bin/../arm-none-eabi/lib/
 environment/buildEnvironmentLibrary/ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.1575312750.708440919/append=true
 environment/buildEnvironmentLibrary/ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.1575312750.708440919/appendContributed=true

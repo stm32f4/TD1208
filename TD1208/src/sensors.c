@@ -12,6 +12,7 @@
 // Custom
 #include <sensors.h>
 #include <i2cdrv.h>
+#include <adcdrv.h>
 #include <bmp180_i2cdrv.h>
 #include <si7020_i2cdrv.h>
 #include <isl29035_i2cdrv.h>
@@ -51,6 +52,9 @@ uint8_t Scheduler_Sensors_Id;
  * @brief Custom init routine. Init I2C and register call back functions
  */
 void TD_USER_Init() {
+
+	GPIO_PinModeSet(gpioPortC, 0, gpioModePushPull, 1);
+
 	// Initialize I2C
 	I2CDRV_Init();
 	TD_RTC_Delay(32678 / 10);
@@ -67,6 +71,7 @@ void TD_USER_Init() {
 	tfp_printf("Register Sensors task.\r\n");
 	Scheduler_Sensors_Id = TD_SCHEDULER_Append(SENSOR_INTERVAL, 0, 0, 0xFF,
 			TD_USER_Measure, 0);
+
 }
 
 /**
@@ -173,11 +178,16 @@ void TD_USER_Measure(uint32_t arg, uint8_t repetition) {
 	uint16_t light = 0;
 	TD_USER_MeasureLight(&light);
 
+	// Measure voltage
+	uint32_t vdd = 0;
+	TD_USER_Measure_VDD(&vdd);
+
 	// Prepare the buffer
 	measure.mes.temperature = (temperature + humTemperature / 100) / 20;
 	measure.mes.pressure = (pressure / 100 - 900);
 	measure.mes.humidity = humidity / 1000;
 	measure.mes.light = light > 0xFF ? 0xFF : light;
+	measure.mes.battery = vdd / 10;
 
 	// Update counter
 	arg++;
@@ -188,9 +198,9 @@ void TD_USER_Measure(uint32_t arg, uint8_t repetition) {
 		GPIO->P[PRODUCT_LED_PORT].DOUTSET = 1 << PRODUCT_LED_BIT;
 		//TD_SIGFOX_Send(measure.bmes, 8, 2);
 		GPIO->P[PRODUCT_LED_PORT].DOUTCLR = 1 << PRODUCT_LED_BIT;
-		tfp_printf("Data sent to sigfox: T=%d P=%u H=%u L=%u\r\n",
+		tfp_printf("Data sent to sigfox: T=%d P=%u H=%u L=%u D= V=%u\r\n",
 				measure.mes.temperature, measure.mes.pressure,
-				measure.mes.humidity, measure.mes.light);
+				measure.mes.humidity, measure.mes.light, measure.mes.battery);
 		// Reset counter
 		arg = 0;
 	}
@@ -249,6 +259,20 @@ void TD_USER_MeasureLight(uint16_t *light) {
 	}
 	Isl29035_Start(ISL29035_CMD1_ASL_ONCE);
 
-	tfp_printf("   Isl29035 L: %u\r\n", *light);
+	tfp_printf("   Isl29035 L: %u", *light);
 }
 
+void TD_USER_Measure_VDD(uint32_t *vdd) {
+
+	TD_USER_InitAdc(adcSingleInpVDDDiv3);
+	TD_USER_ReadAdc(vdd);
+	*vdd = *vdd * 750 / 4096L;
+	tfp_printf("   VDD: %u\r\n", *vdd);
+}
+
+void TD_USER_Measure_CH6(uint32_t *value) {
+
+	TD_USER_InitAdc(adcSingleInpCh6);
+	TD_USER_ReadAdc(value);
+	*value = *value * 500 / 4096L;
+}
