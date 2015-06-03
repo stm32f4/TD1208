@@ -19,5 +19,6 @@ void TD_USER_MeasureHumidity(int32_t *temperature, uint32_t *humidity);
 void TD_USER_MeasureLight(uint16_t *light);
 void TD_USER_Measure_VDD(uint32_t *vdd);
 void TD_USER_Measure_CH6(uint32_t *vdd);
+void TD_USER_MeasureDust(uint32_t *dust);
 
 #endif /* __SENSORS_H_ */

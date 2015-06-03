@@ -24,8 +24,15 @@
 #include <td_printf.h>
 
 #define HEARTBEAT_INTERVAL  	10
-#define SENSOR_INTERVAL  		30
+#define SENSOR_INTERVAL  		5
 #define SIGFOX_INTERVAL  		60
+
+#define DUST_VCC_ON		GPIO_PinOutSet(gpioPortC, 0)
+#define DUST_VCC_OFF	GPIO_PinOutClear(gpioPortC, 0)
+#define DUST_LED_ON		GPIO_PinOutClear(gpioPortC, 0)
+#define DUST_LED_OFF	GPIO_PinOutSet(gpioPortC, 0)
+
+#define VOUT_NO_DUST	500
 
 /******************************************************************************
  *************************  Functions declaration  ****************************
@@ -53,7 +60,10 @@ uint8_t Scheduler_Sensors_Id;
  */
 void TD_USER_Init() {
 
-	GPIO_PinModeSet(gpioPortC, 0, gpioModePushPull, 1);
+	//USR2 : enable 5V
+	GPIO_PinModeSet(gpioPortC, 0, gpioModePushPull, 0);
+	//USR1 : enable led
+	GPIO_PinModeSet(gpioPortC, 15, gpioModeDisabled, 0);
 
 	// Initialize I2C
 	I2CDRV_Init();
@@ -182,12 +192,17 @@ void TD_USER_Measure(uint32_t arg, uint8_t repetition) {
 	uint32_t vdd = 0;
 	TD_USER_Measure_VDD(&vdd);
 
+	//  Measure dust
+	uint32_t dust = 0;
+	TD_USER_MeasureDust(&dust);
+
 	// Prepare the buffer
 	measure.mes.temperature = (temperature + humTemperature / 100) / 20;
 	measure.mes.pressure = (pressure / 100 - 900);
 	measure.mes.humidity = humidity / 1000;
 	measure.mes.light = light > 0xFF ? 0xFF : light;
 	measure.mes.battery = vdd / 10;
+	measure.mes.dust = dust;
 
 	// Update counter
 	arg++;
@@ -198,9 +213,10 @@ void TD_USER_Measure(uint32_t arg, uint8_t repetition) {
 		GPIO->P[PRODUCT_LED_PORT].DOUTSET = 1 << PRODUCT_LED_BIT;
 		//TD_SIGFOX_Send(measure.bmes, 8, 2);
 		GPIO->P[PRODUCT_LED_PORT].DOUTCLR = 1 << PRODUCT_LED_BIT;
-		tfp_printf("Data sent to sigfox: T=%d P=%u H=%u L=%u D= V=%u\r\n",
+		tfp_printf("Data sent to sigfox: T=%d P=%u H=%u L=%u D=%u V=%u\r\n",
 				measure.mes.temperature, measure.mes.pressure,
-				measure.mes.humidity, measure.mes.light, measure.mes.battery);
+				measure.mes.humidity, measure.mes.light, measure.mes.dust,
+				measure.mes.battery);
 		// Reset counter
 		arg = 0;
 	}
@@ -267,7 +283,7 @@ void TD_USER_Measure_VDD(uint32_t *vdd) {
 	TD_USER_InitAdc(adcSingleInpVDDDiv3);
 	TD_USER_ReadAdc(vdd);
 	*vdd = *vdd * 750 / 4096L;
-	tfp_printf("   VDD: %u\r\n", *vdd);
+	tfp_printf("   VDD: %u", *vdd);
 }
 
 void TD_USER_Measure_CH6(uint32_t *value) {
@@ -276,3 +292,81 @@ void TD_USER_Measure_CH6(uint32_t *value) {
 	TD_USER_ReadAdc(value);
 	*value = *value * 500 / 4096L;
 }
+
+/**
+ *@brief Measure dust in mg/m3
+ *
+ *@param[out] dust
+ *		dust  value
+ */
+void TD_USER_MeasureDust(uint32_t *dust) {
+
+	CMU->HFPERCLKEN0 |= CMU_HFPERCLKEN0_TIMER0;
+	TIMER0->CTRL = TIMER_CTRL_PRESC_DIV256;
+
+	//Sets 5 v
+	DUST_VCC_ON;
+
+	// Wait for amplifier to stabilize (1s)
+	// Wait 100 ms
+	TIMER0->CNT = 0;
+	TIMER0->CMD = TIMER_CMD_START;
+	while (TIMER0->CNT < 5300)
+		;
+	TIMER0->CMD = TIMER_CMD_STOP;
+
+	// Perform 10 measures
+	uint8_t cnt = 10;
+	uint32_t value = 0;
+	uint32_t avgValue = 0;
+	while (cnt > 0) {
+		// Set LED on
+		DUST_LED_ON;
+
+		// WAit 0,28 ms (27,5 precisely)
+		TIMER0->CNT = 0;
+		TIMER0->CMD = TIMER_CMD_START;
+		while (TIMER0->CNT < 15)
+			;
+		TIMER0->CMD = TIMER_CMD_STOP;
+
+		// Read value
+		TD_USER_Measure_CH6(&value);
+
+		// Average
+		avgValue += value;
+
+		// Switch lED off
+		DUST_LED_OFF;
+
+		// Wait 10 ms
+		TIMER0->CNT = 0;
+		TIMER0->CMD = TIMER_CMD_START;
+		while (TIMER0->CNT < 530)
+			;
+		TIMER0->CMD = TIMER_CMD_STOP;
+
+		cnt--;
+	}
+
+	// Remove offset
+	if (avgValue > VOUT_NO_DUST * 10) {
+		avgValue -= VOUT_NO_DUST * 10;
+	}
+
+	// Scale value (10*mg)
+	*dust = avgValue / 5;
+
+	// Wait 100 ms
+	TIMER0->CNT = 0;
+	TIMER0->CMD = TIMER_CMD_START;
+	while (TIMER0->CNT < 5300)
+		;
+	TIMER0->CMD = TIMER_CMD_STOP;
+
+	//Unset 5 v
+	DUST_VCC_OFF;
+
+	tfp_printf("   GP2Y1010 D: %d.%u\r\n", *dust / 10, *dust - *dust / 10 * 10);
+}
+

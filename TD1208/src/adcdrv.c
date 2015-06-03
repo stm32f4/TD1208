@@ -21,10 +21,10 @@ void TD_USER_InitAdc(ADC_SingleInput_TypeDef channel) {
 	ADC_Init_TypeDef init = ADC_INIT_DEFAULT;
 	ADC_InitSingle_TypeDef singleInit = ADC_INITSINGLE_DEFAULT;
 
-	/* Init common settings for both single conversion and scan mode */
-	init.timebase = ADC_TimebaseCalc(0);
+	/* Obtain at least 5µs timebase for ADC warmup (bandgap 2.5V ref) */
+	init.timebase = ADC_TimebaseCalc(200000);
 	/* Set ADC clock to 1 MHz, use default HFPERCLK */
-	init.prescale = ADC_PrescaleCalc(100000, 0);
+	init.prescale = ADC_PrescaleCalc(5000000, 0);
 
 	ADC_Init(ADC0, &init);
 
@@ -35,7 +35,7 @@ void TD_USER_InitAdc(ADC_SingleInput_TypeDef channel) {
 
 	/* The datasheet specifies a minimum acquisition time when sampling vdd/3 */
 	/* 32 cycles should be safe for all ADC clock frequencies */
-	singleInit.acqTime = adcAcqTime32;
+	singleInit.acqTime = adcAcqTime4;
 
 	ADC_InitSingle(ADC0, &singleInit);
 }
