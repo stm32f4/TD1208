@@ -41,7 +41,6 @@
 #include <at_parse.h>
 #include <sensors.h>
 
-
 #if AT_CORE
 #include <at_core.h>
 #endif
@@ -84,15 +83,18 @@
 #endif
 
 #define TD_TRAP_RESET_CODE
+#define TD_TRAP_PRINTF_CODE
+
 #define PRODUCT_LED_BLINK 1
 #include <td_config.h>
 
 #define USE_PRINTF
 
+#define STARTUP_PRINT 0
+
 /******************************************************************************
  *************************  Variables declaration   ****************************
  ******************************************************************************/
-
 
 /*******************************************************************************
  **************************   GLOBAL FUNCTIONS   *******************************
@@ -107,35 +109,52 @@ void TD_USER_Setup(void) {
 			TD_UART_Stop);
 
 	// Define variables version to avoid wrong flash init
+#if STARTUP_PRINT
 	tfp_printf("Define variables version to avoid wrong flash init.\r\n");
+#endif
 	TD_FLASH_SetVariablesVersion(FLASH_VARIABLES_VERSION);
 
 #if AT_CORE
+#if STARTUP_PRINT
 	tfp_printf("Add Core AT parser.\r\n");
+#endif
 	AT_AddExtension(&core_extension);
 #endif
+
 #if AT_RADIO_INFO
+#if STARTUP_PRINT
 	tfp_printf("Add Radio AT parser.\r\n");
+#endif
 	AT_AddExtension(&radio_extension);
 #endif
+
 #if AT_SIGFOX
+#if STARTUP_PRINT
 	tfp_printf("Add Sigfox AT parser.\r\n");
+#endif
 	AT_AddExtension(&sigfox_extension);
 #endif
+
 #if AT_LAN_RF
+#if STARTUP_PRINT
 	tfp_printf("Add LAN AT parser.\r\n");
+#endif
 	AT_AddExtension(&lan_extension);
 #endif
 
 #if AT_SENSOR
+#if STARTUP_PRINT
 	tfp_printf("Add Sensor AT parser.\r\n");
+#endif
 	AT_AddExtension(&sensor_extension);
 	AT_AddExtension(&sensor_lan_extension);
 	AT_AddExtension(&sensor_send_extension);
 #endif
 
 #if AT_GEOLOC
+#if STARTUP_PRINT
 	tfp_printf("Add GPS AT parser.\r\n");
+#endif
 	AT_AddExtension(&geoloc_extension);
 	AT_AddExtension(&accelero_extension);
 #endif
@@ -146,7 +165,9 @@ void TD_USER_Setup(void) {
 #if AT_SENSOR
 
 	//Initialize Sensor
+#if STARTUP_PRINT
 	tfp_printf("Initialize Sensor.\r\n");
+#endif
 	TD_SENSOR_Init(TD_SENSOR_GetModuleType(), TD_LAN_GetFrequency(),
 			TD_LAN_GetPowerLevel());
 #endif
@@ -154,11 +175,15 @@ void TD_USER_Setup(void) {
 #if AT_GEOLOC
 
 	//Initialize GPS
+#if STARTUP_PRINT
 	tfp_printf("Initialize GPS.\r\n");
+#endif
 	TD_GEOLOC_Init();
 
 	//Initialize Accelero
+#if STARTUP_PRINT
 	tfp_printf("Initialize Accelerometer.\r\n");
+#endif
 	TD_ACCELERO_Init();
 #endif
 

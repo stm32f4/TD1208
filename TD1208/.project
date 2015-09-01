@@ -3,6 +3,12 @@
 	<name>TD1208</name>
 	<comment></comment>
 	<projects>
+		<project>emlib</project>
+		<project>libtdcore</project>
+		<project>libtddrivers</project>
+		<project>libtdgeoloc</project>
+		<project>libtdrf</project>
+		<project>libtdsensor</project>
 		<project>CMSIS</project>
 	</projects>
 	<buildSpec>

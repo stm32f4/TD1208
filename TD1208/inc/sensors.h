@@ -9,9 +9,10 @@
 #define __SENSORS_H_
 
 #include <em_device.h>
+#include <td_gpio.h>
 
 void TD_USER_Init();
-void TD_USER_Heartbeat(uint32_t arg, uint8_t repetition);
+void TD_USER_Heartbeat();
 void TD_USER_InitSensors();
 void TD_USER_Measure(uint32_t arg, uint8_t repetition);
 void TD_USER_MeasurePressure(int32_t *temperature, uint32_t *pressure);
